@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/PriotectedRoute';
-import MainLayout from './components/layout/MainLayout';
+import MainLayout from './components/Layout_TEMP/MainLayout';
 import Sidebar from './components/Navigation/Sidebar';
 
 // --- PÁGINAS (Módulos) ---
