@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, ArrowRight } from 'lucide-react';
-import './loginScreen.css';
+import './LoginScreen.css';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
