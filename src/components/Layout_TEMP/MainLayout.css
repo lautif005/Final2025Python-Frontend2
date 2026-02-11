@@ -1,0 +1,27 @@
+/* EL CONTENEDOR PADRE QUE ORGANIZA TODO */
+.main-layout-container {
+    display: flex; /* Esto pone al Sidebar y al Contenido lado a lado */
+    width: 100vw;
+    height: 100vh;
+    background-color: #0f172a; /* Fondo base */
+    overflow: hidden; /* Evita scrollbars dobles en la ventana */
+}
+
+/* EL ÁREA DE LA DERECHA (EL 80-85% RESTANTE) */
+.main-content-area {
+    flex: 1; /* Esto le dice: "Toma todo el espacio que sobre después del Sidebar" */
+    height: 100vh;
+    overflow-y: auto; /* Esto permite scrollear el contenido mientras el Sidebar queda fijo */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ENVOLTURA PARA DAR MÁRGENES */
+.content-wrapper {
+    padding: 2rem;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}

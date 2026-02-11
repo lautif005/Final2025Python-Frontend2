@@ -1,34 +1,38 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const GenericScreen = () => {
-    const navigate = useNavigate();
+const ReviewList = () => {
+    const [reviews] = useState([
+        { id: 1, user: "Marta Gómez", product: "Laptop HP", rating: 5, comment: "Excelente servicio y rapidez.", date: "2026-02-10" },
+        { id: 2, user: "Pedro Almodóvar", product: "Mouse Logitech", rating: 4, comment: "Buen producto, caja un poco golpeada.", date: "2026-02-09" },
+        { id: 3, user: "Sofía Loren", product: "Monitor Samsung", rating: 5, comment: "La calidad de imagen es increíble.", date: "2026-02-08" },
+        { id: 4, user: "Juan Román", product: "Teclado Mecánico", rating: 2, comment: "Hacen mucho ruido las teclas.", date: "2026-02-05" },
+    ]);
+
     return (
         <div className="screen-container">
             <div className="header-actions">
-                <h2>Administración del Módulo</h2>
-                <button onClick={() => navigate(-1)} className="btn-icon">⬅ Volver</button>
+                <h2>Moderación de Reseñas</h2>
+                <button className="btn-primary">Exportar Reporte</button>
             </div>
-            <div style={{
-                background: '#1e293b', 
-                padding: '3rem', 
-                textAlign: 'center', 
-                borderRadius: '8px',
-                border: '1px solid #334155',
-                marginTop: '2rem'
-            }}>
-                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🔒</div>
-                <h3 style={{color:'#f8fafc', fontSize:'1.5rem', marginBottom:'0.5rem'}}>Acceso Restringido</h3>
-                <p style={{color:'#94a3b8'}}>Esta funcionalidad requiere permisos de Super-Administrador o configuración adicional en el servidor.</p>
-                <button 
-                    onClick={() => navigate('/dashboard')}
-                    className="btn-primary" 
-                    style={{marginTop: '2rem'}}
-                >
-                    Volver al Dashboard
-                </button>
-            </div>
+            <table className="data-table">
+                <thead><tr><th>Usuario</th><th>Producto</th><th>Calificación</th><th>Comentario</th><th>Fecha</th></tr></thead>
+                <tbody>
+                    {reviews.map((r) => (
+                        <tr key={r.id}>
+                            <td style={{fontWeight:'bold', color:'white'}}>{r.user}</td>
+                            <td>{r.product}</td>
+                            <td>
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                    <span key={i} style={{color: i < r.rating ? '#eab308' : '#475569'}}>★</span>
+                                ))}
+                            </td>
+                            <td style={{color: '#94a3b8', fontStyle: 'italic'}}>"{r.comment}"</td>
+                            <td>{r.date}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
-export default GenericScreen;
+export default ReviewList;

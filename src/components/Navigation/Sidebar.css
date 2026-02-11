@@ -1,14 +1,18 @@
 .sidebar {
-    width: 260px;
+    /* ANCHO DEFINIDO: */
+    width: 260px; /* Puedes usar 18% si prefieres, pero px es más seguro para que no se achique mucho */
+    min-width: 260px; /* Asegura que nunca se encoja menos de esto */
     height: 100vh;
-    background-color: #0f172a; /* Dark Slate */
+    
+    /* ESTÉTICA */
+    background-color: #0f172a; 
     border-right: 1px solid #1e293b;
+    
+    /* COMPORTAMIENTO INTERNO */
     display: flex;
     flex-direction: column;
-    position: fixed; /* Fijo a la izquierda */
-    left: 0;
-    top: 0;
-    z-index: 100;
+    
+    /* IMPORTANTE: Quitamos position: fixed, left, top y z-index */
 }
 
 .sidebar-header {
@@ -44,6 +48,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    overflow-y: auto; /* Si el menú es muy largo, scrollea solo el menú */
 }
 
 .nav-item {
@@ -56,6 +61,7 @@
     text-decoration: none;
     transition: all 0.2s;
     font-weight: 500;
+    white-space: nowrap; /* Evita que el texto se rompa */
 }
 
 .nav-item:hover {
